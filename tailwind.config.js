@@ -5,7 +5,15 @@ export default {
     "./src/**/*.{js,jsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primaryBg: "#000D12"
+      },
+      fontFamily: {
+        sans: ["Archivo", "sans-serif"],
+        mono: ["Chivo Mono", "monospace"],
+      },
+    },
   },
   plugins: [],
 }
