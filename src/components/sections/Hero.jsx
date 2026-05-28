@@ -22,9 +22,9 @@ const HeroSection = () => {
 
   return (
     <section className="relative overflow-hidden bg-primaryBg text-white">
-      <div className={`${sectionContainerClass} py-20 sm:py-24`}>
+      <div className={`${sectionContainerClass} py-32 md:py-26 lg:py-20`}>
         {/* Top row: Left + Right */}
-        <div className="flex min-h-[60vh] flex-col gap-12 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex min-h-[60vh] mb-10 sm:mb-3 md:mb-2 lg:mb-1 flex-col gap-12 lg:flex-row lg:items-center lg:justify-between">
           {/* Left */}
           <div className="z-10 w-full max-w-[720px] lg:w-1/2 lg:flex-none">
             <h1 className="text-4xl font-medium leading-[1.05] tracking-loose text-white sm:text-5xl lg:text-6xl">
@@ -33,13 +33,13 @@ const HeroSection = () => {
               of modern banking
             </h1>
 
-            <p className="mt-8 max-w-xl text-base leading-relaxed text-gray-400 sm:text-lg">
+            <p className="mt-4 md:mt-6 lg:mt-8 max-w-xl text-base leading-relaxed text-gray-400 sm:text-lg">
               We drive innovation and growth, provide seamless customer experience
               and operational excellence
             </p>
 
             {/* Buttons */}
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+            <div className="mt-6 md:mt-8 lg:mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
               <Button>Request Demo</Button>
               <Button variant="secondary">Contact Us</Button>
             </div>

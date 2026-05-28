@@ -66,13 +66,13 @@ const SolutionCard = ({ title, description, badge, icon }) => (
       />
     </div>
 
-    <h3 className="text-2xl font-normal leading-snug text-white">{title}</h3>
+    <h3 className="text-xl md:text-2xl font-normal leading-snug text-white">{title}</h3>
 
-    <p className="mt-6 text-sm leading-relaxed text-gray-400">
+    <p className="mt-4 md:mt-6 text-sm leading-relaxed text-gray-400">
       {description}
     </p>
 
-    <ArrowTextButton className="mt-8">Learn More</ArrowTextButton>
+    <ArrowTextButton className="mt-6">Learn More</ArrowTextButton>
   </article>
 );
 

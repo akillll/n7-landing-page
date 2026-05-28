@@ -73,7 +73,7 @@ function StripContent() {
 
 export default function MovingBankingStrip() {
   return (
-    <div className="w-full overflow-hidden border-y border-[#D6E4FF] bg-white py-8">
+    <div className="w-full overflow-hidden border-y border-[#D6E4FF] bg-white py-4 md:py-8">
       <motion.div
         className="flex w-max"
         animate={{

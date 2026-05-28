@@ -20,7 +20,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <header className="fixed top-3 left-0 right-0 z-50 flex justify-center px-4 pt-4">
+    <header className="fixed top-2 left-0 right-0 z-50 flex justify-center px-4 pt-4">
       <nav
         className={`w-full max-w-3xl rounded-xl px-3 py-2 font-mono text-[#E9F4F9] transition-all duration-300 ${
           isScrolled

@@ -63,7 +63,7 @@ const CB7Section = () => {
       {/* Background Glow */}
       <GradientGlow className="right-[-200px] top-[25%] h-[500px] w-[500px] opacity-10 blur-[120px]" />
 
-      <div className={`relative z-10 ${sectionContainerClass} py-24`}>
+      <div className={`relative z-10 ${sectionContainerClass} py-10 md:py-14 lg:py-20`}>
         {/* Top Section */}
         <div className="grid items-center gap-16 lg:grid-cols-2">
           {/* Left Content */}
