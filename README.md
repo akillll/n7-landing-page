@@ -1,16 +1,154 @@
-# React + Vite
+# N7 Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern responsive React + Tailwind CSS landing page built for the N7 / CB7 banking platform ecosystem.
 
-Currently, two official plugins are available:
+The project focuses on clean frontend architecture, reusable section-based components, smooth interactions, and scalable UI implementation while keeping abstractions lightweight and maintainable.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* React
+* Vite
+* Tailwind CSS
+* Framer Motion
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Getting Started
+
+### Install dependencies
+
+```bash id="jlwmby"
+npm install
+```
+
+### Run development server
+
+```bash id="phnlr5"
+npm run dev
+```
+
+### Build for production
+
+```bash id="kq10e7"
+npm run build
+```
+
+### Preview production build
+
+```bash id="72glca"
+npm run preview
+```
+
+### Run linting
+
+```bash id="uvj0vz"
+npm run lint
+```
+
+---
+
+## Project Structure
+
+```txt id="2t1e9j"
+src/
+├── assets/
+│   ├── icons/
+│   └── images/
+│
+├── components/
+│   ├── common/
+│   ├── sections/
+│   └── ui/
+│
+├── pages/
+│
+├── App.jsx
+└── main.jsx
+```
+
+---
+
+## Sections
+
+The landing page is organized into modular section components under:
+
+```txt id="7xj6ht"
+src/components/sections
+```
+
+Current sections include:
+
+* Hero
+* SolutionsSection
+* CB7Section
+* N7Section
+* InsightsSection
+* CaseStudySection
+* CTA Sections
+* Footer
+
+---
+
+## Architecture Approach
+
+The project intentionally keeps abstractions lightweight.
+
+Reusable components are introduced only where:
+
+* UI patterns repeat
+* interactions are shared
+* duplicated JSX becomes difficult to maintain
+
+Section-specific layout and styling remain close to the component that owns them, making visual iteration faster and easier while keeping the codebase maintainable.
+
+The architecture prioritizes:
+
+* readability
+* scalability
+* responsiveness
+* maintainability
+* clean frontend practices
+
+---
+
+## Performance Considerations
+
+* Optimized responsive layouts
+* Transform-based animations
+* Reusable rendering patterns
+* SVG asset usage
+* Minimal frontend overhead
+* Production-ready build optimization
+
+---
+
+## Deployment
+
+This project is optimized for deployment on:
+
+* Vercel
+* Netlify
+
+### Recommended Workflow
+
+* Push repository to GitHub
+* Connect repository to Vercel
+* Enable automatic deployments through Git integration
+
+---
+
+## Future Improvements
+
+Potential future enhancements:
+
+* CDN integration for image delivery
+* CMS integration
+* Advanced accessibility auditing
+* Motion preference handling
+* Component documentation / Storybook
+* Asset optimization pipeline
+
+---
+
