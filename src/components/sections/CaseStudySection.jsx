@@ -37,14 +37,12 @@ const caseStudies = [
   },
 ];
 
-// Persistent stack offsets — index 0 = active (top), 1 = first behind, 2 = second behind
 const STACK_LAYERS = [
   { x: 0,   y: 0,  scale: 1,    opacity: 1    },
   { x: -28, y: 14, scale: 0.94, opacity: 0.5  },
   { x: -50, y: 26, scale: 0.88, opacity: 0.25 },
 ];
 
-// ─── Reusable Components ──────────────────────────────────────────────────────
 
 const ArrowButton = ({ onClick, direction }) => (
   <button
@@ -57,7 +55,6 @@ const ArrowButton = ({ onClick, direction }) => (
   </button>
 );
 
-// ─── Slide transition variants ────────────────────────────────────────────────
 
 const slideVariants = {
   enter: (dir) => ({ x: dir > 0 ? 60 : -60, opacity: 0 }),
@@ -67,7 +64,6 @@ const slideVariants = {
 
 const slideTransition = { duration: 0.38, ease: [0.32, 0.72, 0, 1] };
 
-// ─── Card face ────────────────────────────────────────────────────────────────
 
 const CardFace = ({ study, isActive }) => (
   <div className="grid gap-8 lg:grid-cols-[320px_1fr] lg:items-center">
@@ -103,8 +99,6 @@ const CardFace = ({ study, isActive }) => (
     )}
   </div>
 );
-
-// ─── Main Section ─────────────────────────────────────────────────────────────
 
 const CaseStudiesSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);

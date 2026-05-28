@@ -41,7 +41,7 @@ const FeatureItem = ({ children }) => (
 
 const CB7Section = () => {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden bg-primaryBg">
       {/* Background CB7 Text */}
       <div className="pointer-events-none absolute inset-0 flex items-start justify-start select-none">
         <span
