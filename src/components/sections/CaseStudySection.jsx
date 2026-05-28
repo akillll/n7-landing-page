@@ -2,6 +2,13 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import {
+  ArrowIcon,
+  ArrowTextButton,
+  GradientGlow,
+  ReadMoreButton,
+  sectionContainerClass,
+} from "../common/sectionPrimitives";
 import insights from "../../assets/images/insights.svg";
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -41,31 +48,12 @@ const STACK_LAYERS = [
 
 const ArrowButton = ({ onClick, direction }) => (
   <button
+    type="button"
     onClick={onClick}
-    className="flex h-12 w-12 items-center justify-center rounded-full border border-[#00B4FD] text-[#00B4FD] transition-all duration-300 hover:bg-[#00B4FD] hover:text-white"
+    aria-label={direction === "prev" ? "Previous case study" : "Next case study"}
+    className="flex h-12 w-12 items-center justify-center rounded-full border border-[#00B4FD] text-[#00B4FD] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#00B4FD] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00B4FD]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-primaryBg"
   >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="h-5 w-5"
-    >
-      {direction === "prev" ? (
-        <>
-          <path d="M19 12H5" />
-          <path d="M11 18L5 12L11 6" />
-        </>
-      ) : (
-        <>
-          <path d="M5 12H19" />
-          <path d="M13 18L19 12L13 6" />
-        </>
-      )}
-    </svg>
+    <ArrowIcon direction={direction} className="h-5 w-5" />
   </button>
 );
 
@@ -88,7 +76,7 @@ const CardFace = ({ study, isActive }) => (
         src={study.image}
         alt={isActive ? study.title : ""}
         draggable="false"
-        className="h-full w-full object-cover"
+        className="h-full w-full object-cover transition-transform duration-700 ease-out hover:scale-[1.03]"
       />
     </div>
 
@@ -110,9 +98,7 @@ const CardFace = ({ study, isActive }) => (
             <span>{study.company}</span>
           </div>
         </div>
-        <button className="mt-10 rounded-xl border border-[#E9F4F980] px-8 py-3 text-sm font-mono uppercase tracking-wide text-[#E9F4F980] transition-all duration-500 hover:border-white hover:bg-white hover:text-[#003ACE]">
-          READ MORE
-        </button>
+        <ReadMoreButton className="mt-10" />
       </div>
     )}
   </div>
@@ -145,9 +131,9 @@ const CaseStudiesSection = () => {
   return (
     <section className="relative overflow-hidden bg-primaryBg py-24 text-white">
       {/* Glow */}
-      <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[linear-gradient(103.43deg,#00B4FD_-1.02%,#003ACE_83.53%)] opacity-10 blur-[140px]" />
+      <GradientGlow className="left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 opacity-10 blur-[140px]" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
+      <div className={`relative z-10 ${sectionContainerClass}`}>
 
         {/* Heading */}
         <h2 className="text-center text-4xl leading-[1.08] tracking-tight text-[#E9F4F9] sm:text-5xl">
@@ -202,8 +188,11 @@ const CaseStudiesSection = () => {
           <div className="flex items-center gap-3">
             {caseStudies.map((_, index) => (
               <button
+                type="button"
                 key={index}
                 onClick={() => goTo(index)}
+                aria-label={`View case study ${index + 1}`}
+                aria-current={activeIndex === index ? "true" : undefined}
                 className={`h-2 rounded-full transition-all duration-500 ${
                   activeIndex === index ? "w-8 bg-[#00B4FD]" : "w-2 bg-[#1B4E65]"
                 }`}
@@ -216,16 +205,7 @@ const CaseStudiesSection = () => {
 
         {/* View All */}
         <div className="mt-10 flex justify-end">
-          <button className="group inline-flex items-center gap-3 text-xs font-medium uppercase tracking-[0.2em] text-[#00B4FD]">
-            <span className="relative leading-none">
-              View All
-              <span className="absolute -bottom-2 left-0 h-[1px] w-[40%] bg-[#00B4FD] transition-all duration-500 ease-out group-hover:w-full" />
-            </span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
-              <path d="M5 12H19" />
-              <path d="M13 6L19 12L13 18" />
-            </svg>
-          </button>
+          <ArrowTextButton>View All</ArrowTextButton>
         </div>
 
       </div>

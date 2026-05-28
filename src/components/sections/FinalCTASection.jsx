@@ -1,9 +1,10 @@
 import Button from "../common/Button";
+import { sectionContainerClass } from "../common/sectionPrimitives";
 
 const FinalCTASection = () => {
   return (
     <section className="bg-primaryBg py-20">
-      <div className="mx-auto max-w-7xl px-6 lg:px-12">
+      <div className={sectionContainerClass}>
         <div className="grid items-center gap-12 lg:grid-cols-[1fr_auto]">
           {/* Left */}
           <div className="max-w-[640px]">
@@ -19,7 +20,7 @@ const FinalCTASection = () => {
           </div>
 
           {/* Right */}
-          <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
+          <div className="flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:items-center lg:justify-end">
             <Button variant="secondary">CONTACT US</Button>
 
             <Button>REQUEST DEMO</Button>

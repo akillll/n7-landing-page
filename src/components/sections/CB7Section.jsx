@@ -1,5 +1,11 @@
 import Button from "../common/Button";
 import CTASection from "../common/CTASection";
+import {
+  ArrowTextButton,
+  CheckIcon,
+  GradientGlow,
+  sectionContainerClass,
+} from "../common/sectionPrimitives";
 
 import cb7dashboard1 from "../../assets/images/cb7dashboard1.svg";
 
@@ -14,6 +20,24 @@ const features = [
   "Loan disbursal and Loan management",
   "Establishing criteria for minimum balances, interest rates, number of withdrawals allowed and so on.",
 ];
+
+const DashboardImage = ({ src, alt, className = "" }) => (
+  <div className={className}>
+    <img
+      src={src}
+      alt={alt}
+      className="h-auto w-full rounded-[16px] object-cover transition-transform duration-700 ease-out lg:hover:-translate-y-2"
+      draggable="false"
+    />
+  </div>
+);
+
+const FeatureItem = ({ children }) => (
+  <div className="flex items-start gap-3 text-sm leading-relaxed text-gray-300 transition-colors duration-300 hover:text-white">
+    <CheckIcon />
+    <span>{children}</span>
+  </div>
+);
 
 const CB7Section = () => {
   return (
@@ -37,9 +61,9 @@ const CB7Section = () => {
       </div>
 
       {/* Background Glow */}
-      <div className="absolute right-[-200px] top-[25%] h-[500px] w-[500px] rounded-full bg-[linear-gradient(103.43deg,#00B4FD_-1.02%,#003ACE_83.53%)] opacity-10 blur-[120px]" />
+      <GradientGlow className="right-[-200px] top-[25%] h-[500px] w-[500px] opacity-10 blur-[120px]" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 lg:px-12">
+      <div className={`relative z-10 ${sectionContainerClass} py-24`}>
         {/* Top Section */}
         <div className="grid items-center gap-16 lg:grid-cols-2">
           {/* Left Content */}
@@ -55,50 +79,25 @@ const CB7Section = () => {
             <div className="my-5">
               <Button>Request Demo</Button>
             </div>
-            <button className="group inline-flex items-center gap-3 text-xs font-medium uppercase tracking-[0.2em] text-[#00B4FD]">
-              <span className="relative leading-none">
-                Learn More
-                <span className="absolute -bottom-2 left-0 h-[1px] w-[40%] bg-[#00B4FD] transition-all duration-500 ease-out group-hover:w-full" />
-              </span>
-
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
-              >
-                <path d="M5 12H19" />
-                <path d="M13 6L19 12L13 18" />
-              </svg>
-            </button>
+            <ArrowTextButton>Learn More</ArrowTextButton>
           </div>
 
           {/* Top Laptop */}
-          <div className="-mr-[40%] ml-[5%]">
-            <img
-              src={cb7dashboard1}
-              alt="AML Dashboard"
-              className="h-auto w-full rounded-[16px] object-cover"
-              draggable="false"
-            />
-          </div>
+          <DashboardImage
+            src={cb7dashboard1}
+            alt="AML Dashboard"
+            className="ml-[5%] lg:-mr-[40%]"
+          />
         </div>
 
         {/* Bottom Section */}
-        <div className="mt-40 grid items-center gap-16 lg:grid-cols-2">
+        <div className="mt-28 grid items-center gap-16 lg:mt-40 lg:grid-cols-2">
           {/* Bottom Laptop */}
-          <div className="order-2 lg:order-1 -ml-[40%] mr-[5%]">
-            <img
-              src={cb7dashboard1}
-              alt="KYC Dashboard"
-              className="h-auto w-full rounded-[16px] object-cover"
-              draggable="false"
-            />
-          </div>
+          <DashboardImage
+            src={cb7dashboard1}
+            alt="KYC Dashboard"
+            className="order-2 mr-[5%] lg:order-1 lg:-ml-[40%]"
+          />
 
           {/* Features */}
           <div className="order-1 lg:order-2">
@@ -114,28 +113,7 @@ const CB7Section = () => {
 
               <div className="mt-8 grid gap-x-10 gap-y-5 sm:grid-cols-2">
                 {features.map((feature) => (
-                  <div
-                    key={feature}
-                    className="flex items-start gap-3 text-sm leading-relaxed text-gray-300"
-                  >
-                    {/* Check */}
-                    <div className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-tr from-[#00B4FD] to-[#003ACE]">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="white"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="h-3 w-3"
-                      >
-                        <path d="M20 6L9 17L4 12" />
-                      </svg>
-                    </div>
-
-                    <span>{feature}</span>
-                  </div>
+                  <FeatureItem key={feature}>{feature}</FeatureItem>
                 ))}
               </div>
             </div>
@@ -144,10 +122,10 @@ const CB7Section = () => {
       </div>
 
       <CTASection
-  outlineText="CB7"
-  title="Take the full advantage of going paper-less now."
-  description="CB7 helps your financial institution improve the client experience, automate and optimize procedures, simplify banking operations"
-/>
+        outlineText="CB7"
+        title="Take the full advantage of going paper-less now."
+        description="CB7 helps your financial institution improve the client experience, automate and optimize procedures, simplify banking operations"
+      />
     </section>
   );
 };

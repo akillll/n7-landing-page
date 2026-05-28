@@ -1,5 +1,6 @@
 import Button from "../common/Button";
 import TrustedLogo from "../common/TrustedByLogos";
+import { GradientGlow, sectionContainerClass } from "../common/sectionPrimitives";
 
 import heroDashboard from "../../assets/images/heroDashboard.svg";
 import shellsLogo from "../../assets/icons/shells.svg";
@@ -21,12 +22,12 @@ const HeroSection = () => {
 
   return (
     <section className="relative overflow-hidden bg-primaryBg text-white">
-      <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12">
+      <div className={`${sectionContainerClass} py-20 sm:py-24`}>
         {/* Top row: Left + Right */}
-        <div className="flex min-h-[60vh] flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex min-h-[60vh] flex-col gap-12 lg:flex-row lg:items-center lg:justify-between">
           {/* Left */}
           <div className="z-10 w-full max-w-[720px] lg:w-1/2 lg:flex-none">
-            <h1 className="text-5xl font-medium leading-[1.05] tracking-loose text-white sm:text-5xl lg:text-6xl">
+            <h1 className="text-4xl font-medium leading-[1.05] tracking-loose text-white sm:text-5xl lg:text-6xl">
               The new foundation
               <br />
               of modern banking
@@ -38,7 +39,7 @@ const HeroSection = () => {
             </p>
 
             {/* Buttons */}
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
               <Button>Request Demo</Button>
               <Button variant="secondary">Contact Us</Button>
             </div>
@@ -47,10 +48,10 @@ const HeroSection = () => {
           {/* Right Image */}
           <div className="relative flex w-full justify-center lg:w-1/2 lg:flex-none lg:justify-end">
             {/* Glow */}
-            <div className="absolute left-1/2 top-1/2 z-0 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[linear-gradient(103.43deg,#00B4FD_-1.02%,#003ACE_83.53%)] opacity-70 blur-[90px]" />
+            <GradientGlow className="left-1/2 top-1/2 z-0 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 opacity-70 blur-[90px]" />
 
             {/* Hero Image */}
-            <div className="relative z-10 w-full max-w-[550px]">
+            <div className="relative z-10 w-full max-w-[550px] transition-transform duration-700 ease-out lg:hover:-translate-y-2">
               <img
                 src={heroDashboard}
                 alt="Banking dashboard"
@@ -66,7 +67,7 @@ const HeroSection = () => {
 
         <div>
           <p className="mb-6 text-md text-gray-400">Trusted By:</p>
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-6">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-6 sm:gap-x-8">
             {trustedLogos.map((logo) => (
               <TrustedLogo key={logo.alt} src={logo.src} alt={logo.alt} />
             ))}

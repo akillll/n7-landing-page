@@ -1,5 +1,6 @@
 import Button from "../common/Button";
 import CTASection from "../common/CTASection";
+import { ArrowTextButton, CheckIcon, sectionContainerClass } from "../common/sectionPrimitives";
 import phone1 from "../../assets/images/phone1.svg";
 import phone2 from "../../assets/images/phone2.svg";
 import phone3 from "../../assets/images/phone3.svg";
@@ -47,23 +48,6 @@ const sections = [
 
 // ─── Reusable Components ─────────────────────────────────────────────────────
 
-const CheckIcon = () => (
-  <div className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-tr from-[#00B4FD] to-[#003ACE]">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="white"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="h-3 w-3"
-    >
-      <path d="M20 6L9 17L4 12" />
-    </svg>
-  </div>
-);
-
 const FeatureList = ({ features }) => (
   <div className="mt-8 space-y-4">
     {features.map((item) => (
@@ -76,7 +60,7 @@ const FeatureList = ({ features }) => (
 );
 
 const PhoneImage = ({ src, alt }) => (
-  <div className="flex justify-center">
+  <div className="flex justify-center transition-transform duration-500 ease-out lg:group-hover:-translate-y-1">
     <img
       src={src}
       alt={alt}
@@ -94,21 +78,24 @@ const FeatureContent = ({ title, description, features }) => (
   </div>
 );
 
-
 const FeaturePair = ({ phone, alt, title, description, features, index }) => {
   const isFlipped = index % 2 !== 0;
+  const content = (
+    <FeatureContent title={title} description={description} features={features} />
+  );
+  const image = <PhoneImage src={phone} alt={alt} />;
 
   return (
-    <div className="grid items-center gap-10 lg:grid-cols-[220px_1fr]">
+    <div className="group grid items-center gap-10 lg:grid-cols-[220px_1fr]">
       {isFlipped ? (
         <>
-          <FeatureContent title={title} description={description} features={features} />
-          <PhoneImage src={phone} alt={alt} />
+          <div className="order-2 lg:order-1">{content}</div>
+          <div className="order-1 lg:order-2">{image}</div>
         </>
       ) : (
         <>
-          <PhoneImage src={phone} alt={alt} />
-          <FeatureContent title={title} description={description} features={features} />
+          <div>{image}</div>
+          <div>{content}</div>
         </>
       )}
     </div>
@@ -118,7 +105,7 @@ const FeaturePair = ({ phone, alt, title, description, features, index }) => {
 
 const N7Section = () => {
   return (
-    <section className="relative overflow-hidden bg-[#EEF4F8] font-sans pt-28">
+    <section className="relative overflow-hidden bg-[#EEF4F8] pt-24 font-sans sm:pt-28">
       {/* Background N7 watermark */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <span
@@ -133,12 +120,12 @@ const N7Section = () => {
         </span>
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
+      <div className={`relative z-10 ${sectionContainerClass}`}>
         <div className="grid items-start gap-16 lg:grid-cols-[0.85fr_1.15fr]">
 
           {/* LEFT: Intro */}
-          <div className="max-w-5xl">
-            <h2 className="text-6xl leading-[1.05] tracking-[0.04em] text-[#101828]">
+          <div className="max-w-5xl lg:sticky lg:top-24">
+            <h2 className="text-4xl leading-[1.05] tracking-[0.04em] text-[#101828] sm:text-5xl lg:text-6xl">
               Digital banking out-of-the-box
             </h2>
             <p className="mt-5 text-md leading-relaxed text-[#667085]">
@@ -148,25 +135,9 @@ const N7Section = () => {
             <div className="mt-8">
               <Button>REQUEST DEMO</Button>
             </div>
-            <button className="group mt-5 inline-flex items-center gap-3 text-xs font-medium uppercase tracking-[0.18em] text-[#0072FF]">
-              <span className="relative leading-none">
-                Learn More
-                <span className="absolute -bottom-2 left-0 h-[1px] w-[40%] bg-[#0072FF] transition-all duration-500 group-hover:w-full" />
-              </span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-4 w-4"
-              >
-                <path d="M5 12H19" />
-                <path d="M13 6L19 12L13 18" />
-              </svg>
-            </button>
+            <ArrowTextButton className="mt-5 text-[#0072FF] [&_span_span]:bg-[#0072FF]">
+              Learn More
+            </ArrowTextButton>
           </div>
 
           {/* RIGHT: Alternating phone + feature pairs */}
@@ -179,11 +150,11 @@ const N7Section = () => {
         </div>
       </div>
       <CTASection
-  outlineText="N7"
-  title="Launch your digital banking experience faster."
-  description="N7 enables banks to modernize customer journeys with scalable and digitally connected banking solutions."
-  bgColor="bg-[#EEF4F8]"
-/>
+        outlineText="N7"
+        title="Launch your digital banking experience faster."
+        description="N7 enables banks to modernize customer journeys with scalable and digitally connected banking solutions."
+        bgColor="bg-[#EEF4F8]"
+      />
     </section>
   );
 };
